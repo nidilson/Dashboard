@@ -1,8 +1,17 @@
+using Dashboard.Servicios;
+using Dashboard.Servicios.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddScoped<ICountriesService, CountriesService>();
+builder.Services.AddHttpClient<ICountriesService, CountriesService>(client =>
+{
+    client.BaseAddress = new Uri("https://restcountries.com/v3.1");
+    client.DefaultRequestHeaders.Add("accept", "application/json");
+    client.Timeout = TimeSpan.FromSeconds(30);
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
