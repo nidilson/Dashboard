@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Dashboard.Models
+namespace Dashboard.Models.Country
 {
 	public class CountryName
 	{

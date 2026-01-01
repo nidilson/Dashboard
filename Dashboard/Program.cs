@@ -5,10 +5,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<ICountriesService, CountriesService>();
-builder.Services.AddHttpClient<ICountriesService, CountriesService>(client =>
+builder.Services.AddScoped<IAPIService, APIService>();
+builder.Services.AddHttpClient<IAPIService, APIService>(client =>
 {
-    client.BaseAddress = new Uri("https://restcountries.com/v3.1");
+    client.BaseAddress = new Uri("https:/");
     client.DefaultRequestHeaders.Add("accept", "application/json");
     client.Timeout = TimeSpan.FromSeconds(30);
 });
