@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using Dashboard.Models.DTO;
+using System.Text.Json.Serialization;
 
 namespace Dashboard.Models.Country
 {
@@ -25,5 +26,24 @@ namespace Dashboard.Models.Country
 		[JsonPropertyName("continents")]
 		public List<string> Continents { get; set; }
 
+
+		public static ChartDataset<string, int> CountriesByRegion(List<Country> list)
+		{
+			ChartDataset<string, int> dataset = new ChartDataset<string, int>();
+
+			foreach (var country in list)
+			{
+
+				if (!dataset.Labels.Contains(country.Region))
+				{
+					dataset.Labels.Add(country.Region);
+					dataset.Data.Add(0);
+				}
+				
+				int index = dataset.Labels.IndexOf(country.Region);
+				dataset.Data[index]++;
+			}
+			return dataset;
+		}
 	}
 }
