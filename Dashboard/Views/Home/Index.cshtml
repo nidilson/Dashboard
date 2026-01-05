@@ -1,15 +1,87 @@
-﻿<div id="charts-container" class="charts-container">
-	<div id="line-chart-container" class="line-chart-container">
-		<canvas id="line-chart-canvas"></canvas>
+﻿<div class="title-container">
+	<i class="bi bi-map-fill title-icon"></i>
+	<h1>Datos de Países</h1>
+</div>
+<div id="charts-container" class="charts-container">
+
+	<div class="chart">
+		<div class="chart-tittle">
+			<h2>
+				Población por región
+			</h2>
+		</div>
+		<div class="rect-chart">
+			<div id="line-chart-container" class="rect-chart-container">
+				<canvas id="line-chart-canvas"></canvas>
+			</div>
+		</div>
 	</div>
-	<div id="pie-chart-container" class="pie-chart-container">
-		<canvas id="pie-chart-canvas"></canvas>
+	
+	<div class="chart">
+		<div class="chart-tittle">
+			<h2>
+				Población por país
+			</h2>
+		</div>
+		<div class="sqr-chart">
+			<div id="pie-chart-container" class="sqr-chart-container">
+				<canvas id="pie-chart-canvas"></canvas>
+			</div>
+		</div>
 	</div>
-	<div id="bar-chart-container" class="bar-chart-container">
-		<canvas id="bar-chart-canvas"></canvas>
+
+	<div class="chart">
+		<div class="chart-tittle">
+			<h2>
+				Cantidad de países por región
+			</h2>
+		</div>
+		<div class="rect-chart">
+			<div id="bar-chart-container" class="rect-chart-container">
+				<canvas id="bar-chart-canvas"></canvas>
+			</div>
+		</div>
 	</div>
-	<div id="hor-bar-chart-container" class="hor-bar-chart-container">
-		<canvas id="hor-bar-chart-canvas"></canvas>
+
+	<div class="chart">
+		<div class="chart-tittle">
+			<h2>
+				Población/Área por región
+			</h2>
+		</div>
+		<div class="rect-chart">
+			<div id="hor-bar-chart-container" class="rect-chart-container">
+				<canvas id="hor-bar-chart-canvas"></canvas>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="title-container">
+	<img src="/Resources/Fonts/pokeball-pokemon-svgrepo-com.svg" class="title-svg"/>
+	<h1>Estadísticas Pokémon</h1>
+</div>
+<div id="pokemon-stats-container" class="pokemon-stats-container">
+	<div class="select-sprite-container">
+
+		<div class="pokemon-select">
+			<div class="input-container">
+				<input type="text" id="pokemon-input" placeholder="">
+				<label for="pokemon-input" id="input-placeholder">Buscar</label>
+			</div>
+			<div class="option-container" id="options">
+			</div>
+		</div>
+	
+		<div class="sprite-container">
+			<img id="sprite" />
+		</div>
+	</div>
+
+	<div class="sqr-chart">
+		<div id="radar-chart-container" class="sqr-chart-container">
+			<canvas id="radar-chart-canvas"></canvas>
+		</div>
 	</div>
 </div>
 
@@ -18,3 +90,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
 	<script src="~/js/chartspage.js" asp-append-version="true"></script>
 }
+@section Styles{
+}
+

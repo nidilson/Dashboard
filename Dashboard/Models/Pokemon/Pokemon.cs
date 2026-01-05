@@ -18,5 +18,9 @@ namespace Dashboard.Models.Pokemon
 
 		[JsonPropertyName("url")]
 		public string Url { get; set; }
+
+		[JsonPropertyName("sprites")]
+		public Sprites Sprites { get; set; }
+
 	}
 }

@@ -61,6 +61,25 @@ span{
     font-size: 1rem;
     color: var(--var-color-texto-oscuro);
 }
+main{
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+h1 {
+    font-family: Roboto;
+    text-align: center;
+    color: var(--var-color-texto-oscuro);
+    font-size: 1.7rem;
+    margin: 0.5rem 0rem;
+}
+h2{
+    font-family: Roboto;
+    text-align: center;
+    color: var(--var-color-texto-oscuro);
+    font-size: 1.5rem;
+    margin: 0.5rem 0rem;
+}
 /* #endregion */
 
 /* #region Nav */
@@ -131,10 +150,11 @@ span{
     grid-template-columns: 30vw 1fr;
     flex: 1;
     width: 100vw;
+    overflow: hidden;
     transition: grid-template-columns ease 0.5s;
 }
 .container.sidebar-hidden {
-    grid-template-columns: 0 1fr;
+    grid-template-columns: 0px 1fr;
 }
     /* #region Sidebar */
     aside{
@@ -180,20 +200,270 @@ span{
 /* #endregion */
 
 /* #region Charts */
+.title-container{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+
+}
+.title-icon{
+    color: var(--var-color-secundario);
+    font-size: 2rem;
+}
+.title-svg {
+    width: 2rem;
+    height: 2rem;
+}
 .charts-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
     width: 100%;
     padding: 0.5rem;
 }
-/* #region Bar Chart */
-.bar-chart-container{
+.rect-chart{
+    width: 100%;
+    aspect-ratio: 16/9;
+}
+.sqr-chart {
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+.rect-chart-container {
     position: relative;
-    width: 50vw;
-    height: 40vh;
+    width: 100%;
+    height: 100%;
+}
+.sqr-chart-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.chart{
+    width: 100%;
+    border: 2px solid var(--var-color-gris-claro);
+    padding: 0.5rem;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+}
+
+/* #endregion */
+
+/* #region pokemon */
+.pokemon-select{
+    width: 10rem;
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.pokemon-stats-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-y: hidden;
+    padding: 0.5rem;
+}
+#sprite{
+    width: 150px;
+    height: 150px;
+    transition: all ease 0.3s;
+}
+
+.sprite-container{
+    border: solid 1px var(--var-color-terciario);
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px var(--var-color-terciario);
+}
+
+#pokemon-input {
+    width: 100%;
+    height: 3rem;
+    font-size: 1.2rem;
+    font-family: Roboto;
+    border: solid 1px rgba(0,0,0,0.2);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: all ease 0.3s;
+}
+
+.input-container {
+    position: relative;
+}
+
+#pokemon-input:focus {
+    border: solid 2px var(--var-color-terciario);
+    outline: none;
+}
+
+#pokemon-input + #input-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+    transition: all ease 0.2s;
+    width: 50%;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 1.2rem;
+}
+
+#pokemon-input:focus + #input-placeholder, #pokemon-input:not(:placeholder-shown) + #input-placeholder {
+    font-size: 1rem;
+    position: absolute;
+    top: 0%;
+    background-color: rgb(255, 255, 255);
+}
+
+.pokemon-option {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    transition: all ease 0.3s;
+    width: 100%;
+    text-align: center;
+    height: 2rem;
+    min-height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        background-color: var(--var-color-primario);
+    }
+}
+
+.option-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    border: solid 2px rgba(0,0,0,0.2);
+    border-radius: 15px;
+    width: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.select {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    height: 200px;
+    border: solid 1px;
+    padding: 2rem;
+}
+
+.selected {
+    background-color: var(--var-color-primario);
+}
+
+.option-hidden {
+    display: none;
+}
+#options{
+    min-height: 200px;
+    max-height: 100px;
+}
+
+.select-sprite-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
 }
 /* #endregion */
-
-/* #endregion */
-
 /* #region nombre */
-
 /* #endregion */
+@media(min-width: 768px) {
+    /* #region Container */
+    .container {
+        grid-template-columns: 25vw 1fr;
+    }
+    /* #region Sidebar */
+    aside {
+        background-color: var(--var-color-primario);
+        box-shadow: 0px 0px 4px rgba(0,0,0,0.5);
+        width: 25vw;
+        transition: ease 0.5s;
+    }
+
+    .menu-option {
+        flex-direction: row;
+    }
+    /* #endregion */
+    /* #endregion */
+    /* #region Pokemon */
+    .pokemon-stats-container {
+        display: flex;
+        flex-direction: row;
+    }
+    .sqr-chart{
+        width: 70%;
+    }
+    /* #endregion */
+}
+
+@media(min-width: 1024px) {
+    /* #region Container */
+    .container {
+        grid-template-columns: 250px 1fr;
+    }
+    /* #region Sidebar */
+    aside {
+        background-color: var(--var-color-primario);
+        box-shadow: 0px 0px 4px rgba(0,0,0,0.5);
+        width: 250px;
+        transition: ease 0.5s;
+    }
+
+    /* #endregion */
+    /* #endregion */
+
+    /* #region Charts */
+    .charts-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+        padding: 1rem 2rem;
+    }
+        .charts-container > * {
+            min-width: 0;
+            min-height: 0;
+        }
+
+    .chart {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* #endregion */
+}
+
+@media(min-width: 1300px){
+    /* #region Pokemon */
+    .select-sprite-container{
+        flex-direction: row;
+    }
+    /* #endregion */
+}
