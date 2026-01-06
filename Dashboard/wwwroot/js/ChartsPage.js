@@ -25,6 +25,7 @@ const primaryColorSemiTrasparent = "rgba(62,142,126,0.7)";
 const primaryColor = "rgba(62,142,126,1)";
 var input;
 var options;
+
 /**
  * Método que se ejecuta al cargar DOM
  */
@@ -42,6 +43,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 })
 
+/**
+ * Función que añade event listeners a la selección de pokemon
+ */
 function AddEventListeners() {
     input = document.getElementById("pokemon-input");
     options = document.querySelectorAll(".pokemon-option");
@@ -71,6 +75,10 @@ function AddEventListeners() {
     });
 }
 
+/**
+ * Función que carga las estadísticas de un pokemon
+ * @param {any} id - ID de pokemon a buscar
+ */
 async function loadPokemonData(id) {
     await fetch(`/home/PokemonStats/${id}`, {
         method: "GET",
@@ -109,11 +117,12 @@ async function loadPokemonData(id) {
             alert("Hubo un error al cargar los datos" + err.message);
         })
 }
+
 /**
  * Función que obtiene los datos de los países
  */
 async function GetCountryData(){
-    await fetch("/Home/CountryData", {
+    await fetch("/Home/Countries", {
         method: "GET",
         headers: {
             "Content-Type" : "application/json"
@@ -147,24 +156,31 @@ async function GetCountryData(){
  * Función que obtiene los nombres de los pokemon 1ra generación
  */
 async function GetPokemonData() {
-    await fetch("/Home/PokemonData", {
+    await fetch("/Home/Pokemons", {
         method: "GET",
         headers: {
             "Content-Type": "application-json"
         }
     })
         .then(response => {
+            let res = response.json();
             if (!response.ok) {
-                throw new Error(response);
+                throw new Error(res.message);
             }
-            return response.json();
+            return res;
         })
         .then(data => {
             pokemonList = data.pok;
             CreatePokemonOptions();
         })
+        .catch(err => {
+            alert(`Error: ${err.message}`)
+        })
 }
 
+/**
+ * Función que agrega las opciones de los pokemones a escoger para ver sus estadísticas
+ */
 function CreatePokemonOptions() {
     let labelsContainer = document.getElementById("options");
 
@@ -297,6 +313,10 @@ function createLabel(name, url) {
     return label;
 }
 
+/**
+ * Función que actualiza los datos en gráfico de radar, primero destruye el gráfico
+ * actual (Si existe) y luego lo vuelve a crear con los datos actualizados
+ */
 function UpdateRadarChart() {
     if (radarChart != undefined) {
         radarChart.destroy();

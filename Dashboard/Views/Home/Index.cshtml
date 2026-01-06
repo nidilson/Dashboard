@@ -61,26 +61,28 @@
 	<img src="/Resources/Fonts/pokeball-pokemon-svgrepo-com.svg" class="title-svg"/>
 	<h1>Estadísticas Pokémon</h1>
 </div>
-<div id="pokemon-stats-container" class="pokemon-stats-container">
-	<div class="select-sprite-container">
+<div class="pokemon-wrapper">
+	<div id="pokemon-stats-container" class="pokemon-stats-container">
+		<div class="select-sprite-container">
 
-		<div class="pokemon-select">
-			<div class="input-container">
-				<input type="text" id="pokemon-input" placeholder="">
-				<label for="pokemon-input" id="input-placeholder">Buscar</label>
+			<div class="pokemon-select">
+				<div class="input-container">
+					<input type="text" id="pokemon-input" placeholder="">
+					<label for="pokemon-input" id="input-placeholder">Buscar</label>
+				</div>
+				<div class="option-container" id="options">
+				</div>
 			</div>
-			<div class="option-container" id="options">
-			</div>
-		</div>
 	
-		<div class="sprite-container">
-			<img id="sprite" />
+			<div class="sprite-container">
+				<img id="sprite" />
+			</div>
 		</div>
-	</div>
 
-	<div class="sqr-chart">
-		<div id="radar-chart-container" class="sqr-chart-container">
-			<canvas id="radar-chart-canvas"></canvas>
+		<div class="sqr-chart">
+			<div id="radar-chart-container" class="sqr-chart-container">
+				<canvas id="radar-chart-canvas"></canvas>
+			</div>
 		</div>
 	</div>
 </div>

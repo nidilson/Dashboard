@@ -65,6 +65,7 @@ main{
     width: 100%;
     overflow-x: hidden;
     overflow-y: auto;
+    
 }
 h1 {
     font-family: Roboto;
@@ -79,6 +80,10 @@ h2{
     color: var(--var-color-texto-oscuro);
     font-size: 1.5rem;
     margin: 0.5rem 0rem;
+}
+a{
+    text-decoration: none;
+    color: inherit;
 }
 /* #endregion */
 
@@ -142,6 +147,7 @@ h2{
     font-size: 1.5rem;
     color: var(--var-color-texto-oscuro);
 }
+
 /* #endregion */
 
 /* #region Container */
@@ -185,16 +191,19 @@ h2{
         &:hover {
             background-color: var(--var-color-secundario)
         }
-    } 
-
-    .menu-option span{
-        font-weight: bold;
-        color: white;
     }
+
+        .menu-option span {
+            font-weight: bold;
+            color: white;
+        }
     .menu-option i {
         font-weight: bold;
         color: white;
         font-size: 2rem;
+    }
+    .menu-option.selected {
+        background-color: var(--var-color-secundario)
     }
     /* #endregion */
 /* #endregion */
@@ -271,6 +280,7 @@ h2{
     justify-content: center;
     overflow-y: hidden;
     padding: 0.5rem;
+    max-width: 1150px;
 }
 #sprite{
     width: 150px;
@@ -386,6 +396,70 @@ h2{
 
 }
 /* #endregion */
+
+/* #region tabla */
+.title-table-container, .table-container{
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+.title-table-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+#date {
+    height: 2rem;
+    width: 10rem;
+    border: 1px solid var(--var-color-gris-claro);
+    border-radius: 10px;
+    transition: all ease 0.3s;
+
+    &:hover {
+        border-color: var(--var-color-terciario);
+    }
+}
+.fecha-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.5rem;
+}
+#date:focus{
+    outline: none;
+    border: 2px solid var(--var-color-terciario);
+}
+#load-btn {
+    background-color: var(--var-color-secundario);
+    color: white;
+    border: none;
+    height: 2rem;
+    width: 7rem;
+    border-radius: 10px;
+    transition: all ease 0.1s;
+    font-size: 1rem;
+    font-family: Roboto;
+    &:hover {
+        border-bottom: solid 3px #ac6b51;
+    }
+
+    &:active {
+        background-color: #ac6b51;
+    }
+}
+/* #endregion */
+
 /* #region nombre */
 /* #endregion */
 @media(min-width: 768px) {
@@ -458,6 +532,13 @@ h2{
     }
 
     /* #endregion */
+
+    .pokemon-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
 }
 
 @media(min-width: 1300px){

@@ -54,8 +54,6 @@ namespace Dashboard.Servicios
 
 				var contentStream = await respuesta.Content.ReadAsStreamAsync();
 
-				Console.WriteLine(contentStream);
-
 				return await JsonSerializer.DeserializeAsync<T>(contentStream, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 				
 			}
