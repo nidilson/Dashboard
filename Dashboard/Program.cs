@@ -1,8 +1,16 @@
+using Dashboard.Servicios;
+using Dashboard.Servicios.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddHttpClient<IAPIService, APIService>(client =>
+{
+    client.DefaultRequestHeaders.Add("accept", "application/json");
+    client.Timeout = TimeSpan.FromSeconds(30);
+});
+builder.Services.AddScoped<IAPIService, APIService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

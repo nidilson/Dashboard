@@ -1,0 +1,44 @@
+﻿<div class="title-table-container">
+	<div class="title">
+		<i class="bi bi-rocket-takeoff title-icon"></i>
+		<h1>Objetos cercanos a la tierra</h1>
+	</div>
+	<span>En esta tabla se pueden ver los asteroides registrados por la nasa cercanos a la tierra en la fecha seleccionada, para más información se puede acceder al enlace de la columna "Nasa JPL"</span>
+	<div class="fecha-container">
+		<input type="text" id="date" placeholder="Selecciona fecha">
+		<button id="load-btn">Cargar</button>
+	</div>
+</div>
+<div class="table-container">
+	<table class="nasa-table" id="nasa-table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nombre</th>
+				<th>Nasa JPL</th>
+				<th>Es peligroso</th>
+				<th>Velocidad (KM/H)</th>
+				<th>Diametro máximo (KM)</th>
+				<th>Diametro Mínimo (KM)</th>
+			</tr>
+		</thead>
+		<tbody>
+
+		</tbody>
+	</table>
+
+</div>
+
+@section Styles{
+	<link rel="stylesheet" href="https://cdn.datatables.net/2.3.6/css/dataTables.dataTables.css" />
+	<link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.7/css/responsive.dataTables.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+}
+
+@section Scripts{
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+	<script src="https://cdn.datatables.net/2.3.6/js/dataTables.js"></script>
+	<script src="https://cdn.datatables.net/responsive/3.0.7/js/dataTables.responsive.min.js"></script>
+	<script src="~/js/tablesscript.js" asp-append-version="true"></script>
+}
