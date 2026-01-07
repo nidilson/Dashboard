@@ -250,6 +250,7 @@ a{
 .sqr-chart-container {
     position: relative;
     width: 100%;
+    min-width: 100%;
     height: 100%;
 }
 .chart{
@@ -460,6 +461,81 @@ a{
 }
 /* #endregion */
 
+/* #region Cards */
+.cards-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    perspective: 1200px;
+}
+
+.card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;   
+    border-bottom: solid 7px var(--var-color-secundario);
+    max-height: 400px;
+    max-width: 300px;
+    padding: 0.5rem;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+
+    transform-style: preserve-3d;
+    transition: all ease .5s .3s;
+    backface-visibility: hidden;
+    &:hover{
+        transform: rotateY(360deg) scale(1.1);
+
+
+    }
+
+}
+.card-img {
+    width: 100%;
+    max-height: 50%;
+    overflow: hidden;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-img img{
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1/1;
+}
+.card-title h2{
+    font-size: 1.7rem;
+    color: var(--var-color-terciario)
+}
+.pokemon-data span {
+    font-size: 1.3rem;
+    margin-right: 0.5rem;
+}
+.bold{
+    font-weight: bold;
+}
+.card-content {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: start;
+}
+.abilities ul{
+    margin: 0.5rem 0rem 0rem 0rem;
+    padding: 0rem 0rem 0rem 1rem;
+    font-family: Roboto;
+    font-size: 1rem;
+}
+/* #endregion */
+
 /* #region nombre */
 /* #endregion */
 @media(min-width: 768px) {
@@ -487,6 +563,13 @@ a{
     }
     .sqr-chart{
         width: 70%;
+    }
+    /* #endregion */
+
+    /* #region Cards */
+    .cards-container {
+        gap: 2rem;
+        padding: 2rem;
     }
     /* #endregion */
 }

@@ -40,6 +40,12 @@ namespace Dashboard.Controllers
 			return View();
         }
 
+        public IActionResult Cards()
+        {
+			ViewBag.Title = "Cards";
+			ViewBag.MenuIndexSelected = 3;
+			return View();
+		}
         public IActionResult Privacy()
         {
             return View();
@@ -114,13 +120,36 @@ namespace Dashboard.Controllers
             return Ok(new {name = pokemon.Name, labels = pokemon.Stats.Select(s => s.Stat.Name).ToList(), data = pokemon.Stats.Select(s => s.BaseStat).ToList(), sprite = pokemon.Sprites.Front});
 		}
 
-        /// <summary>
-        /// API que obtiene los datos de los objetos cercanos a la tierra
-        /// </summary>
-        /// <param name="date">Fecha de la cual se desea obtener los datos</param>
-        /// <returns></returns>
+		/// <summary>
+		/// API que obtiene las estadísticas de un pokemon
+		/// </summary>
+		/// <param name="id">ID del pokemon que se desea obtener las estadísticas</param>
+		/// <returns>Objeto Pokemon con los datos y estadísticas del pokemon</returns>
+		[HttpGet("Home/Pokemon/{id}")]
+		public async Task<IActionResult> Pokemon(int id)
+		{
+			Pokemon pokemon;
 
-        [HttpGet("Home/NearEarthObjects/{date}")]
+			try
+			{
+				pokemon = await _apiService.Get<Pokemon>(new Uri($"https://pokeapi.co/api/v2/pokemon/{id}/"));
+
+			}
+			catch (Exception e)
+			{
+				return BadRequest(new { message = e.Message });
+			}
+
+			return Ok(pokemon);
+		}
+
+		/// <summary>
+		/// API que obtiene los datos de los objetos cercanos a la tierra
+		/// </summary>
+		/// <param name="date">Fecha de la cual se desea obtener los datos</param>
+		/// <returns></returns>
+
+		[HttpGet("Home/NearEarthObjects/{date}")]
         public async Task<IActionResult> NearEarthObjects(string date)
         {
             string apiKey = Environment.GetEnvironmentVariable("NASA_API_Key");

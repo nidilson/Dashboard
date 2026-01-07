@@ -10,9 +10,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     tenYearsAgo.setFullYear(today.getFullYear() - 10);
 
     AddBtnEventListener();
+    CreateDatePicker();
     await GetTableData(GetFormatDate(today));
     UpdateTable();
-    CreateDatePicker();
 })
 
 /**

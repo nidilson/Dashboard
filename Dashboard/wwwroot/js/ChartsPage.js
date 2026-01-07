@@ -111,7 +111,11 @@ async function loadPokemonData(id) {
 
             let pokemonImg = document.getElementById("sprite");
             pokemonImg.setAttribute("src", data.sprite);
-            UpdateRadarChart();
+            if (radarChart != undefined) {
+                UpdateRadarChart();
+            } else {
+                CreateRadarChart();
+            }
         })
         .catch(err => {
             alert("Hubo un error al cargar los datos" + err.message);
@@ -317,10 +321,7 @@ function createLabel(name, url) {
  * Función que actualiza los datos en gráfico de radar, primero destruye el gráfico
  * actual (Si existe) y luego lo vuelve a crear con los datos actualizados
  */
-function UpdateRadarChart() {
-    if (radarChart != undefined) {
-        radarChart.destroy();
-    }
+function CreateRadarChart() {
     radarChart = new Chart(
         document.getElementById('radar-chart-canvas'),
         {
@@ -343,4 +344,9 @@ function UpdateRadarChart() {
     );
 
 
+}
+
+function UpdateRadarChart() {
+    radarChart.data = dataRadarChart;
+    radarChart.update();
 }

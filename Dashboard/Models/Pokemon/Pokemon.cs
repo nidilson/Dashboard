@@ -13,6 +13,12 @@ namespace Dashboard.Models.Pokemon
 		[JsonPropertyName("height")]
 		public double Height { get; set; }
 
+		[JsonPropertyName("weight")]
+		public double Weight { get; set; }
+
+		[JsonPropertyName("abilities")]
+		public List<Abilities> Abilities { get; set; }
+
 		[JsonPropertyName("stats")]
 		public List<Stats> Stats { get; set; }
 
